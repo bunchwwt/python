@@ -169,17 +169,71 @@ exceptions and control flow
 - exception object- contains info about where and why exceptional event occured is transported from the point it occured to exception handler
 
 
-handling exceptions
-exceptions and programmer
 
-re-raising exceptions
+# Iteration and Iterables
 
-exceptions are part of the API
+## List and Set Comprehensions
+- comprehensions - concise syntax for describing lists, sets, and dictionaries
+- readable and expressive
+- close to natural language - self documenting
+`[expr(item) for item in iterable]`
+- sets are unordered containers
+## Dictionary Comprehensions
+- evaluated in tandem for each new item
+`{key_expr(item): value_expr(item) for item in iterable}`
+- inverting dictionary helpful 
+## Filtering Comprehensions
 
-exceptions and protocols
-avoid explicit type checks
-its easier to ask forgiveness 
-cleanup actions
+## Moment of Zen
+- code is written once, but read over and over. Fewer is clearer
+- comprehensions should normally have no side effects
+
+## Iteration Protocols
+- iterable - can be passed to `iter()` to produce iterator
+- iterator - can be passed wo `next()` to get the next value in the sequence
+stopping iteration with an expection
+- A single end: sequences only have one ending, after all, so reaching it is exceptional
+- Infinite sequences: finding the end of an infiinite sequence would be truly exceptional
+
+## Generator functions
+- most powerful python
+- iterables defined by functions
+- sequences are evaluated lazily, only compute next property on demand. 
+- can model sequences with no definite end - streams of data
+- composable into pipelines
+- defined as any funciton that includes the yield keyword. - must include at least 1 yield statement
+- and may also include return statements
+- runs to next yield, smart enough to know where it left off 
+
+## Maintaining State in Generators
+- control flow is easier to see in a graphical debugger
+- Pycharm
+- conintue - finish current loop iteration and begin the next iteration immediately. skips any values that have already been yielded
+
+## Laziness and the Infinite
+- generators only do enough work to produce requested data.
+- this allows generators to model infinit (or just very large) sequences.
+- ex: sensor readings, math sequences, large files
+
+## Generator expressions
+`(expr(item) for item in iterable)`
+- each time call the gernator, create a new generator object
+- to recreate a generator from a generator expression, you must execute the expression again. 
+
+
+## Iteration Tools
+- enumerate and sum
+- itertools module provides manay more
+- `itertools.islice()` - perform lazy slicing of any iterator. 
+- `itertools.count()` - an unbounded arithmetic sequence of integers.
+- `any()` - determines if any elements in a series are true
+- `all()` - determines if all elements in a series are true
+
+
+# Classes
+
+
+
 
 
 
